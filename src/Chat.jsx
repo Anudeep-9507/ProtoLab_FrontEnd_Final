@@ -40,8 +40,7 @@ function Chat(){
                 colors={['#88fbffff', '#6baeffff']}
                 animationSpeed={2}
                 >
-                    {/* What's on your mind? */}
-                    What's up Founder!
+                    {/* What's up Founder! */}
                 </GradientText>
             </div>
         );
