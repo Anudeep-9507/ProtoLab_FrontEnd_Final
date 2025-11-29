@@ -1,0 +1,130 @@
+.pvi-form {
+  width: 100%;
+}
+
+.pvi-inputBox {
+  position: relative;
+  transform-origin: center bottom;
+  animation: pviPopIn 480ms cubic-bezier(0.22, 1, 0.36, 1) 520ms both;
+  will-change: transform, opacity;
+}
+
+.pvi-placeholder {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.5);
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 70px);
+  z-index: 2;
+}
+
+.pvi-submit {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* place inline in flex container */
+  margin-left: 12px; /* small gap from right edge */
+  margin-right: 12px;
+  z-index: 2;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+}
+
+.pvi-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Rainbow border styles */
+.rainbow-border-container {
+  position: relative;
+  border-radius: 14px;
+  padding: 1px;
+  background: linear-gradient(
+    90deg,
+    /* #ff4d4d, */
+    #3fedfd,
+    #83e2eb,
+    #5e9bf0e3,
+    #7ee0ff
+  );
+  background-size: 200% auto;
+  animation: gradient 3s linear infinite;
+  display: flex;
+  align-items: center;
+}
+
+.rainbow-border-container::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  bottom: 1px;
+  border-radius: 13px;
+  background: #000;
+  z-index: 0;
+}
+
+.rainbow-border-container input {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: none;
+  flex: 1 1 auto;
+  padding: 14px 56px 14px 18px; /* reserve space on right for button */
+  font-size: 1rem;
+  border-radius: 14px;
+  color: #fff;
+}
+
+.rainbow-border-container input:focus {
+  outline: none;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pviPopIn {
+  from {
+    transform: translateY(24px) scale(0.36);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-2px) scale(1.07);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pvi-inputBox {
+    animation: none;
+  }
+  .rainbow-border-container {
+    animation: none;
+  }
+}
