@@ -1,4 +1,5 @@
 import './ChatWindow.css';
+import { API_BASE_URL } from './config';
 import Chat from './Chat.jsx';
 import { useContext, useState, useEffect } from 'react';
 import { MyContext } from './MyContext.jsx';
@@ -56,7 +57,7 @@ function ChatWindow({ toggleSidebar, isSidebarOpen }) {
             })
         };
         try {
-            const response = await fetch("http://localhost:8080/api/chat", options);
+            const response = await fetch(`${API_BASE_URL}/api/chat`, options);
             const res = await response.json();
             console.log(res);
             setReply(res.res);

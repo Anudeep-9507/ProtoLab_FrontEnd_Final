@@ -1,4 +1,5 @@
 import './Sidebar.css';
+import { API_BASE_URL } from './config';
 import { MyContext } from './MyContext';
 import { useContext, useEffect } from 'react';
 import { v1 as uuidv1 } from 'uuid';
@@ -19,7 +20,7 @@ function Sidebar({ isOpen = true, toggleSidebar }) {
 
     const getAllThreads = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/thread", {
+            const response = await fetch(`${API_BASE_URL}/api/thread`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -50,7 +51,7 @@ function Sidebar({ isOpen = true, toggleSidebar }) {
     const changeThread = async (newThreadId) => {
         setCurrThreadId(newThreadId);
         try {
-            const response = await fetch(`http://localhost:8080/api/thread/${newThreadId}`, {
+            const response = await fetch(`${API_BASE_URL}/api/thread/${newThreadId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -67,7 +68,7 @@ function Sidebar({ isOpen = true, toggleSidebar }) {
 
     const deleteThread = async (threadId) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/thread/${threadId}`, {
+            const response = await fetch(`${API_BASE_URL}/api/thread/${threadId}`, {
                 method: "DELETE",
                 headers: {
                     'Authorization': `Bearer ${token}`
